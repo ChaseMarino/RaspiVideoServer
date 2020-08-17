@@ -1,7 +1,13 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from subprocess import check_output
+
 import urllib.parse
 import webbrowser
 import os
+
+
+def get_pid(name):
+    return check_output(["pidof",name])
 
 class Serv(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -12,7 +18,7 @@ class Serv(BaseHTTPRequestHandler):
         if not(os.path.isfile(self.path[1:])):
             link = self.path[14::]
             link = urllib.parse.unquote(link)
-            os.system("taskkill /im iexplore.exe /f")
+            os.kill(pid, get_pid("chromium-browser"))
             webbrowser.open(link)
             self.path = 'index.html'
             
