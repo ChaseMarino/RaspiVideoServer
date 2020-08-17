@@ -1,19 +1,29 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import webbrowser
+import os
 
 class Serv(BaseHTTPRequestHandler):
     def do_GET(self):
+
         if self.path == '/':
             self.path = '/index.html'
+        
+        if not(os.path.isfile(self.path[1:])):
+            link = self.path[14::]
+            #os.system("taskkill /im chrome.exe /f")
+            webbrowser.open(link)
+            self.path = 'index.html'
+            
         try: 
             file_to_open = open(self.path[1:]).read()
-            webbrowser.open('http://google.com')
             self.send_response(200)
         except:
-            file_to_open = "File not foundg"
+            file_to_open = open('index.html').read()
             self.send_response(404)
+
         self.end_headers()
         self.wfile.write(bytes(file_to_open, 'utf-8'))
 
-httpd = HTTPServer(('localhost', 8080), Serv)
+
+httpd = HTTPServer(('192.168.1.207', 8080), Serv)
 httpd.serve_forever()
