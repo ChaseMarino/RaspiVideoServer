@@ -1,4 +1,5 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
+import urllib.parse
 import webbrowser
 import os
 
@@ -10,7 +11,8 @@ class Serv(BaseHTTPRequestHandler):
         
         if not(os.path.isfile(self.path[1:])):
             link = self.path[14::]
-            #os.system("taskkill /im chrome.exe /f")
+            link = urllib.parse.unquote(link)
+            os.system("taskkill /im iexplore.exe /f")
             webbrowser.open(link)
             self.path = 'index.html'
             
