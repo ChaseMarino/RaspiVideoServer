@@ -27,7 +27,7 @@ class Serv(BaseHTTPRequestHandler):
         content = self.rfile.read(content_length).decode('utf-8')
 
         if self.path == "/page_load":
-            self.page_load(content)
+            self.handle_page_load(content)
         elif self.path == "/fullscreen":
             self.handle_fullscreen(content)
         
@@ -36,7 +36,7 @@ class Serv(BaseHTTPRequestHandler):
         self.end_headers()
         
     
-    def handle_fullscreen(self):
+    def handle_fullscreen(self, content: str):
         driver.send_keys("f")
 
     def handle_page_load(self, content: str):
