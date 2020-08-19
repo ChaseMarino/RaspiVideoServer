@@ -5,7 +5,6 @@ import urllib.parse
 from io import BytesIO
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 
 class Serv(BaseHTTPRequestHandler):
@@ -38,7 +37,7 @@ class Serv(BaseHTTPRequestHandler):
         
     
     def handle_fullscreen(self):
-        pass
+        driver.send_keys("f")
 
     def handle_page_load(self, content: str):
         link_url = content.split('=', 1)[1]
