@@ -36,7 +36,7 @@ class Serv(BaseHTTPRequestHandler):
         self.end_headers()
         
     
-    def handle_fullscreen(self):
+    def handle_fullscreen(self, content: str):
         driver.send_keys("f")
 
     def handle_page_load(self, content: str):
