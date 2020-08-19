@@ -32,14 +32,20 @@ class Serv(BaseHTTPRequestHandler):
             self.handle_fullscreen(content)
         elif self.path == "/volumeUp":
             self.handle_volumeUp(content)
-        elif self.path = "/volumeDown":
+        elif self.path == "/volumeDown":
             self.handle_volumeDown(content)
-        
+        elif self.path == "/pause":
+            self.handle_pause(content)
+
+
+
         self.send_response(302)
         self.send_header('Location', "/index.html")
         self.end_headers()
         
-    
+    def handle_pause(self, content: str):
+        driver.find_element_by_tag_name("html").send_keys("SPACE")
+
     def handle_fullscreen(self, content: str):
         driver.find_element_by_tag_name("html").send_keys("f")
         
