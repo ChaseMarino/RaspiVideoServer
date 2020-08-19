@@ -3,3 +3,7 @@ body{
     color: blue;
 }
 
+.buttons{
+    display: inline-block;
+    background-color: blue;
+}

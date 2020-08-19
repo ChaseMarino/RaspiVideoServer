@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" href="style.css">
         <meta charset="utf-8">
-        <title>Index</title>
+        <title>Link Sender</title>
     </head>
     <body>
         <h1>Send Link!</h1>
@@ -14,9 +14,19 @@
             <input type="submit">
         </form>
 
-        <form method="POST" action="/fullscreen">
-            <input type="submit" value="fullscreen">
-        </form>
+        <div class="buttons">
+            <form method="POST" action="/fullscreen">
+                <input type="submit" value="fullscreen">
+            </form>
+
+            <form method="POST" action="/volumeUp">
+                <input type="submit" value="Volume Up">
+            </form>
+
+            <form method="POST" action="/volumeDown">
+                <input type="submit" value="Volume Down">
+            </form>
+        </div>
 
     </body>
 </html>

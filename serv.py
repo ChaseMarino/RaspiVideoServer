@@ -30,6 +30,10 @@ class Serv(BaseHTTPRequestHandler):
             self.handle_page_load(content)
         elif self.path == "/fullscreen":
             self.handle_fullscreen(content)
+        elif self.path == "/volumeUp":
+            self.handle_volumeUp(content)
+        elif self.path = "/volumeDown":
+            self.handle_volumeDown(content)
         
         self.send_response(302)
         self.send_header('Location', "/index.html")
@@ -37,7 +41,13 @@ class Serv(BaseHTTPRequestHandler):
         
     
     def handle_fullscreen(self, content: str):
-        driver.send_keys("f")
+        driver.find_element_by_tag_name("html").send_keys("f")
+        
+    def handle_volumeUp(self, content: str):
+        driver.find_element_by_tag_name("html").send_keys("ARROW_UP")
+
+    def handle_volumeDown(self, content: str):
+        driver.find_element_by_tag_name("html").send_keys("ARROW_DOWN")
 
     def handle_page_load(self, content: str):
         link_url = content.split('=', 1)[1]
